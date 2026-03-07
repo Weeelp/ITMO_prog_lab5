@@ -1,0 +1,4 @@
+#!/bin/bash
+export DATA_PATH="repo.xml"
+mvn compile
+mvn exec:java -Dexec.mainClass="app.ConsoleApp"
