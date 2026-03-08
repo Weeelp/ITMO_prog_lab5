@@ -21,7 +21,6 @@ public class RemoveLastCommandImpl implements Command {
         boolean removed = collectionManager.removeLast();
         
         if (removed) {
-            int newSize = collectionManager.size();
             System.out.println("> Последний фильм успешно удалён.");
 
         } else {

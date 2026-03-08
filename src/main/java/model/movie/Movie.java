@@ -62,73 +62,39 @@ public class Movie {
         this.screenWriter = screenWriter;
     }
     
-    public long getId (){
-        return this.id;
-    }
+    public long getId (){ return this.id; }
 
-    public String getName (){
-        return this.name;
-    }
+    public String getName (){ return this.name; }
 
-    public LocalDate getCreationDate (){
-        return this.creationDate;
-    }
+    public LocalDate getCreationDate (){ return this.creationDate; }
 
-    public Coordinates getCoordinates (){
-        return this.coordinates;
-    }
+    public Coordinates getCoordinates (){ return this.coordinates; }
 
-    public int getOscarsCount (){
-        return this.oscarsCount;
-    }
+    public int getOscarsCount (){ return this.oscarsCount; }
 
-    public Double getTotalBoxOffice (){
-        return this.totalBoxOffice;
-    }
+    public Double getTotalBoxOffice (){ return this.totalBoxOffice; }
 
-    public Long getUsaBoxOffice (){
-        return this.usaBoxOffice;
-    }
+    public Long getUsaBoxOffice (){ return this.usaBoxOffice; }
 
-    public Genre getGenre (){
-        return this.genre;
-    }
+    public Genre getGenre (){ return this.genre; }
 
-    public Person getScreenWriter (){
-        return this.screenWriter;
-    }
+    public Person getScreenWriter (){ return this.screenWriter; }
 
-    public void setName (String name){
-        this.name = name;
-    }
+    public void setName (String name){ this.name = name; }
     
-    public void setCreationDate (LocalDate creationDate){
-        this.creationDate = creationDate;
-    }
+    public void setCreationDate (LocalDate creationDate){ this.creationDate = creationDate; }
 
-    public void setCoordinates (Coordinates coordinates){
-        this.coordinates = coordinates;
-    }
+    public void setCoordinates (Coordinates coordinates){ this.coordinates = coordinates; }
 
-    public void setOscarsCount (int oscarsCount){
-        this.oscarsCount = oscarsCount;
-    }
+    public void setOscarsCount (int oscarsCount){ this.oscarsCount = oscarsCount; }
     
-    public void setTotalBoxOffice (Double totalBoxOffice){
-        this.totalBoxOffice = totalBoxOffice;
-    }
+    public void setTotalBoxOffice (Double totalBoxOffice){ this.totalBoxOffice = totalBoxOffice; }
     
-    public void setUsaBoxOffice (Long usaBoxOffice){
-        this.usaBoxOffice = usaBoxOffice;
-    }
+    public void setUsaBoxOffice (Long usaBoxOffice){ this.usaBoxOffice = usaBoxOffice; }
     
-    public void setGenre (Genre genre){
-        this.genre = genre;
-    }
+    public void setGenre (Genre genre){ this.genre = genre; }
 
-    public void setScreenWriter (Person screenWriter){
-        this.screenWriter = screenWriter;
-    }
+    public void setScreenWriter (Person screenWriter){ this.screenWriter = screenWriter;}
 
     @Override
     public String toString() {

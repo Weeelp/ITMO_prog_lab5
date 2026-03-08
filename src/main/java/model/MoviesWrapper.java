@@ -17,11 +17,7 @@ public class MoviesWrapper {
         this.movies = movies;
     }
     
-    public List<Movie> getMovies() {
-        return movies;
-    }
+    public List<Movie> getMovies() { return movies; }
     
-    public void setMovies(List<Movie> movies) {
-        this.movies = movies;
-    }
+    public void setMovies(List<Movie> movies) { this.movies = movies; }
 }

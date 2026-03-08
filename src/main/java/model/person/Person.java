@@ -32,45 +32,25 @@ public class Person {
         System.out.println(name);
     }
     
-    public String getName() {
-        return this.name;
-    }
+    public String getName() { return this.name; }
     
-    public int getHeight() {
-        return this.height;
-    }
+    public int getHeight() { return this.height; }
     
-    public EyeColor getEyeColor() {
-        return this.eyeColor;
-    }
+    public EyeColor getEyeColor() { return this.eyeColor; }
     
-    public HairColor getHairColor() {
-        return this.hairColor;
-    }
+    public HairColor getHairColor() { return this.hairColor; }
     
-    public Country getNationality() {
-        return this.nationality;
-    }
+    public Country getNationality() { return this.nationality; }
 
-    public void setName(String name) {
-        this.name = name;
-    }
+    public void setName(String name) { this.name = name; }
 
-    public void setHeight(int height) {
-        this.height = height;
-    }
+    public void setHeight(int height) { this.height = height; }
     
-    public void setEyeColor(EyeColor eyeColor) {
-        this.eyeColor = eyeColor;
-    }
+    public void setEyeColor(EyeColor eyeColor) { this.eyeColor = eyeColor; }
 
-    public void setHairColor(HairColor hairColor) {
-        this.hairColor = hairColor;
-    }
+    public void setHairColor(HairColor hairColor) { this.hairColor = hairColor; }
 
-    public void setNationality(Country nationality) {
-        this.nationality = nationality;
-    }
+    public void setNationality(Country nationality) { this.nationality = nationality; }
        
     @Override
     public String toString() {

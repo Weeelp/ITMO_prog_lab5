@@ -47,7 +47,7 @@ public class CollectionManager {
     }
     
     public LinkedList<Movie> getAll() {
-        return new LinkedList<>(movies); 
+        return new LinkedList<>(movies);
     }
     
     public boolean isEmpty() {

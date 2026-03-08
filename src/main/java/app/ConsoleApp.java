@@ -1,11 +1,6 @@
 package app;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import manager.*;
-import command.Command;
-
 
 public class ConsoleApp {
     private final String FILE_PATH = System.getenv("DATA_PATH");

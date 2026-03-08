@@ -23,7 +23,7 @@ public class SaveCommandImpl implements Command {
                 System.out.println("> Коллекция пуста. Нечего сохранять.");
                 return;
             }
-            
+            collectionManager.sortByIdAscending();
             fileManager.saveToFile(collectionManager.getAll());
             System.out.println("> Коллекция успешно сохранена. Всего фильмов: " + collectionManager.size());
             

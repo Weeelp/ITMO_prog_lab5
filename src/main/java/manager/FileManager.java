@@ -3,6 +3,7 @@ package manager;
 import io.FileReader;
 import io.FileWriter;
 import model.movie.Movie;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.LinkedList;
 
@@ -16,11 +17,29 @@ public class FileManager {
         this.fileWriter = new FileWriter();
     }
     
-    public LinkedList<Movie> loadFromFile(String filePath) throws Exception {
+    public LinkedList<Movie> loadFromFile(String filePath) {
         this.currentFilePath = filePath;
-        LinkedList<Movie> movies = fileReader.loadFromFile(filePath);
-        System.out.println("Загружено фильмов: " + movies.size());
-        return movies;
+        try {
+            LinkedList<Movie> movies = fileReader.loadFromFile(filePath);
+            System.out.println("> Загружено фильмов: " + movies.size());
+            return movies;
+        } catch (FileNotFoundException e) {
+            System.out.println("> Файл не найден. Будет создан новый файл: " + filePath);
+            createEmptyFile(filePath);
+            return new LinkedList<>();
+        } catch (Exception e) {
+            System.out.println("> Файл повреждён или имеет неверный формат. Будет создан новый файл: " + filePath);
+            createEmptyFile(filePath);
+            return new LinkedList<>();
+        }
+    }
+    
+    private void createEmptyFile(String filePath) {
+        try {
+            fileWriter.saveToFile(filePath, new LinkedList<>());
+        } catch (IOException ex) {
+            System.err.println("> Не удалось создать пустой файл: " + ex.getMessage());
+        }
     }
     
     public void saveToFile(LinkedList<Movie> movies) throws IOException {
@@ -28,13 +47,13 @@ public class FileManager {
             throw new IOException("Путь к файлу не указан");
         }
         fileWriter.saveToFile(currentFilePath, movies);
-        System.out.println("Сохранено фильмов: " + movies.size());
+        System.out.println("> Сохранено фильмов: " + movies.size());
     }
     
     public void saveToFile(String filePath, LinkedList<Movie> movies) throws IOException {
         this.currentFilePath = filePath;
         fileWriter.saveToFile(filePath, movies);
-        System.out.println("Сохранено фильмов: " + movies.size());
+        System.out.println("> Сохранено фильмов: " + movies.size());
     }
     
     public String getCurrentFilePath() {
