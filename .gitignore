@@ -1,4 +1,12 @@
-# Maven
+*.class
+*.log
+*.jar
+*.war
+*.ear
+*.zip
+*.tar.gz
+*.rar
+
 target/
 pom.xml.tag
 pom.xml.releaseBackup
@@ -9,25 +17,9 @@ dependency-reduced-pom.xml
 buildNumber.properties
 .mvn/timing.properties
 .mvn/wrapper/maven-wrapper.jar
+.mvn/wrapper/maven-wrapper.properties
 
-# IDE
-.idea/
-*.iml
-*.iws
-*.ipr
-.settings/
-.classpath
-.project
-.factorypath
-
-# Compiled files
-*.class
-
-# Logs
-*.log
-
-*.md
 script.sh
 run
 
-
+*.md
