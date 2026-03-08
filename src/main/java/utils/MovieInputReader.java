@@ -5,7 +5,8 @@ import model.movie.*;
 import model.person.*;
 import validator.MovieValidator;
 import exceptions.ValidationException;
-
+import exceptions.ExitException;
+import exceptions.StopInputException;
 import java.time.LocalDate;
 
 public class MovieInputReader {
@@ -14,8 +15,17 @@ public class MovieInputReader {
     public MovieInputReader(ScannerManager scannerManager) {
         this.scannerManager = scannerManager;
     }
+
+    private void checkStop(String input) throws StopInputException {
+    if (input.equalsIgnoreCase("exit")) {
+        throw new ExitException(); 
+    }
+    if (input.equalsIgnoreCase("stop")) {
+        throw new StopInputException();
+    }
+}
     
-    public MovieData readMovieData() { 
+    public MovieData readMovieData() throws StopInputException, ValidationException {
         String name = readName();
         Coordinates coordinates = readCoordinates();
         int oscarsCount = readOscarsCount();
@@ -29,10 +39,11 @@ public class MovieInputReader {
                 totalBoxOffice, usaBoxOffice, genre, screenWriter);
     }
     
-    private String readName() {
+    private String readName() throws StopInputException, ValidationException {
         while (true) {
             System.out.println(">> Введите имя фильма:");
             String input = scannerManager.readLine().trim();
+            checkStop(input);
             try {
                 return MovieValidator.validateName(input);
             } catch (ValidationException e) {
@@ -41,16 +52,17 @@ public class MovieInputReader {
         }
     }
     
-    private Coordinates readCoordinates() {
+    private Coordinates readCoordinates() throws StopInputException, ValidationException {
         long x = readX();
         float y = readY();
         return new Coordinates(x, y);
     }
     
-    private long readX() {
+    private long readX() throws StopInputException, ValidationException {
         while (true) {
             System.out.println(">> Введите координату X:");
             String input = scannerManager.readLine().trim();
+            checkStop(input);
             try {
                 return MovieValidator.validateX(input);
             } catch (ValidationException e) {
@@ -59,10 +71,11 @@ public class MovieInputReader {
         }
     }
     
-    private float readY() {
+    private float readY() throws StopInputException, ValidationException {
         while (true) {
             System.out.println(">> Введите координату Y:");
             String input = scannerManager.readLine().trim();
+            checkStop(input);
             try {
                 return MovieValidator.validateY(input);
             } catch (ValidationException e) {
@@ -71,10 +84,11 @@ public class MovieInputReader {
         }
     }
     
-    private int readOscarsCount() {
+    private int readOscarsCount() throws StopInputException, ValidationException {
         while (true) {
             System.out.println(">> Введите количество Оскаров:");
             String input = scannerManager.readLine().trim();
+            checkStop(input);
             try {
                 return MovieValidator.validateOscarsCount(input);
             } catch (ValidationException e) {
@@ -83,10 +97,11 @@ public class MovieInputReader {
         }
     }
     
-    private double readTotalBoxOffice() {
+    private double readTotalBoxOffice() throws StopInputException, ValidationException {
         while (true) {
             System.out.println(">> Введите общий сбор:");
             String input = scannerManager.readLine().trim();
+            checkStop(input);
             try {
                 return MovieValidator.validateTotalBoxOffice(input);
             } catch (ValidationException e) {
@@ -95,10 +110,11 @@ public class MovieInputReader {
         }
     }
     
-    private long readUsaBoxOffice() {
+    private long readUsaBoxOffice() throws StopInputException, ValidationException {
         while (true) {
             System.out.println(">> Введите сборы в США:");
             String input = scannerManager.readLine().trim();
+            checkStop(input);
             try {
                 return MovieValidator.validateUsaBoxOffice(input);
             } catch (ValidationException e) {
@@ -107,10 +123,11 @@ public class MovieInputReader {
         }
     }
     
-    private Genre readGenre() {
+    private Genre readGenre() throws StopInputException, ValidationException {
         while (true) {
             System.out.println(">> Введите жанр (WESTERN, COMEDY, TRAGEDY, SCIENCE_FICTION):");
             String input = scannerManager.readLine().trim();
+            checkStop(input);
             try {
                 return MovieValidator.validateEnum(input, Genre.class,
                         "WESTERN, COMEDY, TRAGEDY, SCIENCE_FICTION");
@@ -120,7 +137,7 @@ public class MovieInputReader {
         }
     }
     
-    private Person readPerson() {
+    private Person readPerson() throws StopInputException, ValidationException {
         String name = readPersonName();
         int height = readPersonHeight();
         EyeColor eyeColor = readEyeColor();
@@ -129,10 +146,11 @@ public class MovieInputReader {
         return new Person(name, height, eyeColor, hairColor, nationality);
     }
     
-    private String readPersonName() {
+    private String readPersonName() throws StopInputException, ValidationException {
         while (true) {
             System.out.println(">> Введите имя сценариста:");
             String input = scannerManager.readLine().trim();
+            checkStop(input);
             try {
                 return MovieValidator.validatePersonName(input);
             } catch (ValidationException e) {
@@ -141,10 +159,11 @@ public class MovieInputReader {
         }
     }
     
-    private int readPersonHeight() {
+    private int readPersonHeight() throws StopInputException, ValidationException {
         while (true) {
             System.out.println(">> Введите рост сценариста:");
             String input = scannerManager.readLine().trim();
+            checkStop(input);
             try {
                 return MovieValidator.validatePersonHeight(input);
             } catch (ValidationException e) {
@@ -153,10 +172,11 @@ public class MovieInputReader {
         }
     }
     
-    private EyeColor readEyeColor() {
+    private EyeColor readEyeColor() throws StopInputException, ValidationException {
         while (true) {
             System.out.println(">> Введите цвет глаз (BLACK, BLUE, WHITE, BROWN):");
             String input = scannerManager.readLine().trim();
+            checkStop(input);
             try {
                 return MovieValidator.validateEnum(input, EyeColor.class,
                         "BLACK, BLUE, WHITE, BROWN");
@@ -166,10 +186,11 @@ public class MovieInputReader {
         }
     }
     
-    private HairColor readHairColor() {
+    private HairColor readHairColor() throws StopInputException, ValidationException {
         while (true) {
             System.out.println(">> Введите цвет волос (GREEN, RED, ORANGE, WHITE):");
             String input = scannerManager.readLine().trim();
+            checkStop(input);
             try {
                 return MovieValidator.validateEnum(input, HairColor.class,
                         "GREEN, RED, ORANGE, WHITE");
@@ -179,10 +200,11 @@ public class MovieInputReader {
         }
     }
     
-    private Country readCountry() {
+    private Country readCountry() throws StopInputException, ValidationException {
         while (true) {
             System.out.println(">> Введите национальность (RUSSIA, UNITED_KINGDOM, GERMANY, ITALY, JAPAN, AMERICA):");
             String input = scannerManager.readLine().trim();
+            checkStop(input);
             try {
                 return MovieValidator.validateEnum(input, Country.class,
                         "RUSSIA, UNITED_KINGDOM, GERMANY, ITALY, JAPAN, AMERICA");

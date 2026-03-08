@@ -3,6 +3,7 @@ package command.impl;
 import manager.CollectionManager;
 import manager.ScannerManager;
 import command.Command;
+import exceptions.*;
 import utils.MovieInputReader;
 import utils.MovieInputReader.MovieData;
 import model.movie.Movie;
@@ -54,6 +55,10 @@ public class UpdateByIdCommandImpl implements Command {
             
             System.out.println(">> Фильм с ID " + id + " успешно обновлён!");
             
+         } catch (StopInputException e) {
+            System.out.println(">> Операция прервана пользователем.");
+        } catch (ValidationException e) {
+            System.out.println(">> Ошибка в данных: " + e.getMessage());
         } catch (Exception e) {
             System.out.println(">> Непредвиденная ошибка: " + e.getMessage());
         }

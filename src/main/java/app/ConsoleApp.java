@@ -1,5 +1,6 @@
 package app;
 
+import exceptions.ExitException;
 import manager.*;
 
 public class ConsoleApp {
@@ -58,7 +59,12 @@ public class ConsoleApp {
             String cmd = scannerManager.readLine();
             if (cmd == null) break;
             
-            processCommand(cmd);
+            try {
+                processCommand(cmd);
+            } catch (ExitException e) {
+                System.out.println("> " + e.getMessage());
+                break;
+            }
         }
         
         System.out.println("> Приложение завершено");

@@ -19,7 +19,7 @@ public class HelpCommandImpl implements Command {
         System.out.println("save - сохранить коллекцию в файл");
         System.out.println("execute_script {file_name} - считать и исполнить скрипт из указанного файла. В скрипте содержатся команды в таком же виде, в котором их вводит пользователь в интерактивном режиме.");
         System.out.println("remove_last - удалить последний элемент из коллекции");
-        System.out.println("add_if_max {element} - добавить новый элемент в коллекцию, если его значение превышает значение наибольшего элемента этой коллекции");
+        System.out.println("add_if_max {element} - добавить новый элемент в коллекцию, если его значение oscarsCount превышает значение oscarsCount наибольшего элемента этой коллекции");
         System.out.println("remove_greater {element} - удалить из коллекции все элементы, превышающие заданный");
         System.out.println("max_by_oscars_count - вывести любой объект из коллекции, значение поля oscarsCount которого является максимальным");
         System.out.println("print_ascending - вывести элементы коллекции в порядке возрастания");

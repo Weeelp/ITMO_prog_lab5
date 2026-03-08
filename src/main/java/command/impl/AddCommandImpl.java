@@ -6,6 +6,7 @@ import command.Command;
 import utils.MovieInputReader;
 import utils.MovieInputReader.MovieData;
 import model.movie.Movie;
+import exceptions.*;
 
 public class AddCommandImpl implements Command {
     private final CollectionManager collectionManager;
@@ -35,7 +36,11 @@ public class AddCommandImpl implements Command {
             
             collectionManager.add(movie);
             System.out.println(">> Фильм успешно добавлен! ID: " + movie.getId());
-            
+     
+        } catch (StopInputException e) {
+            System.out.println(">> Операция прервана пользователем.");
+        } catch (ValidationException e) {
+            System.out.println(">> Ошибка в данных: " + e.getMessage());
         } catch (Exception e) {
             System.out.println(">> Непредвиденная ошибка: " + e.getMessage());
         }

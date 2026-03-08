@@ -13,6 +13,7 @@ public class CommandManager {
         commands = new HashMap<>();
         
         commands.put("add", new AddCommandImpl(cm, sm));
+        commands.put("add_if_max", new AddIfMaxCommandImpl(cm, sm));
         commands.put("show", new ShowCommandImpl(cm));
         commands.put("info", new InfoCommandImpl(cm));
         commands.put("update_by_id", new UpdateByIdCommandImpl(cm, sm));

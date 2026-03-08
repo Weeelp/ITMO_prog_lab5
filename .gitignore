@@ -26,4 +26,8 @@ buildNumber.properties
 # Logs
 *.log
 
+*.md
+script.sh
+run
+
 
