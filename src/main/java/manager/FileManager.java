@@ -24,12 +24,17 @@ public class FileManager {
             System.out.println("> Загружено фильмов: " + movies.size());
             return movies;
         } catch (FileNotFoundException e) {
-            System.out.println("> Файл не найден. Будет создан новый файл: " + filePath);
-            createEmptyFile(filePath);
+            System.out.println("> Файл не найден. Будет создан новый файл: " + currentFilePath);
+            createEmptyFile(currentFilePath);
             return new LinkedList<>();
         } catch (Exception e) {
-            System.out.println("> Файл повреждён или имеет неверный формат. Будет создан новый файл: " + filePath);
-            createEmptyFile(filePath);
+            int dotIndex = filePath.lastIndexOf('.');
+            if (dotIndex > 0) {
+                this.currentFilePath = filePath.substring(0, dotIndex) + "_new.xml";
+            } else { this.currentFilePath = filePath + "_new.xml"; }
+
+            System.out.println("> Файл повреждён или имеет неверный формат. Будет создан новый файл: " + currentFilePath);
+            createEmptyFile(currentFilePath);
             return new LinkedList<>();
         }
     }

@@ -16,10 +16,14 @@ public class RemovedByIdCommandImpl implements Command {
 
         if (args == null || args.length == 0) {
             System.out.println("> Не указано id фильма!");
-            System.out.println("> Использование: remove_by_id <id>");
             return;
         }
 
+        if (args.length > 1) {
+            System.out.println("> Слишком много аргументов, неверный ввод");
+            return;
+        } 
+ 
         long id;
 
         try {

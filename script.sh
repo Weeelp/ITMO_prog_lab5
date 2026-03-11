@@ -5,6 +5,8 @@ show
 save
 fldg
 
+execute_script script1.sh
+
 print_descending
 
 add

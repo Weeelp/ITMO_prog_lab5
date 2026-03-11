@@ -22,7 +22,12 @@ public class UpdateByIdCommandImpl implements Command {
         if (args.length == 0) {
             System.out.println("> Укажите id фильма");
             return;
-        }
+        } 
+
+        if (args.length > 1) {
+            System.out.println("> Слишком много аргументов, неверный ввод");
+            return;
+        } 
         
         long id;
         try {

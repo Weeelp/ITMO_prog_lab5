@@ -84,7 +84,7 @@ public class MovieValidator {
     public static int validatePersonHeight(String heightStr) throws ValidationException {
         try {
             int height = Integer.parseInt(heightStr.trim());
-            if (height <= 40) {
+            if (height <= 0) {
                 throw new ValidationException("Рост должен быть положительным");
             }
             return height;

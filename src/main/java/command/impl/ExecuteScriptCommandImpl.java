@@ -27,6 +27,11 @@ public class ExecuteScriptCommandImpl implements Command {
             return;
         }
 
+        if (args.length > 1) {
+            System.out.println("> Слишком много аргументов, неверный ввод");
+            return;
+        } 
+
         String filename = args[0];
         
         if (executingScripts.contains(filename)) {
@@ -38,7 +43,7 @@ public class ExecuteScriptCommandImpl implements Command {
         try {
             executingScripts.add(filename);
             
-            scannerManager.setFileSource(filename);
+            scannerManager.pushFileSource(filename);
             
             System.out.println("> Выполнение скрипта: " + filename);
             int lineCount = 0;
@@ -60,7 +65,7 @@ public class ExecuteScriptCommandImpl implements Command {
             System.out.println("> Файл не найден: " + filename);
         } finally {
             executingScripts.remove(filename);
-            scannerManager.setConsoleSource();
+            scannerManager.popSource();
         }
     }
 }

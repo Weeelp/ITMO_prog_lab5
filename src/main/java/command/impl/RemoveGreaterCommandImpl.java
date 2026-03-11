@@ -23,6 +23,11 @@ public class RemoveGreaterCommandImpl implements Command {
             return;
         }
 
+        if (args.length > 1) {
+            System.out.println("> Слишком много аргументов, неверный ввод");
+            return;
+        } 
+        
         long id;
         try {
             id = Long.parseLong(args[0]);

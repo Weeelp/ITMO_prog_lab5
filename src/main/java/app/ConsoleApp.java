@@ -5,6 +5,7 @@ import manager.*;
 
 public class ConsoleApp {
     private final String FILE_PATH = System.getenv("DATA_PATH");
+    private String currentFilePath;
     private final ScannerManager scannerManager;
     private final CollectionManager collectionManager;
     private final FileManager fileManager;
@@ -13,6 +14,8 @@ public class ConsoleApp {
 
     public ConsoleApp(ScannerManager scannerManager) throws Exception {
         this.scannerManager = scannerManager;
+        this.currentFilePath = FILE_PATH;
+
         
         if (FILE_PATH == null || FILE_PATH.trim().isEmpty()) {
             throw new Exception("ERROR: переменная окружения DATA_PATH не установлена.");
@@ -23,7 +26,8 @@ public class ConsoleApp {
         
         try {
             collectionManager.setMovies(fileManager.loadFromFile(FILE_PATH));
-            System.out.println("> Данные загружены из файла: " + FILE_PATH);
+            this.currentFilePath = fileManager.getCurrentFilePath();
+            System.out.println("> Данные загружены из файла: " + currentFilePath);
         } catch (Exception e) {
             System.out.println("> Предупреждение: не удалось загрузить данные из файла. Будет создана пустая коллекция.");
             System.out.println("> Причина: " + e.getMessage());
